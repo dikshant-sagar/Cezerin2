@@ -8,8 +8,8 @@ const dbName = mongoPathName.substring(mongoPathName.lastIndexOf("/") + 1)
 
 const reconnectInterval = 1000
 const connectOptions = {
-  reconnectTries: 3600,
-  reconnectInterval,
+  //reconnectTries: 3600,
+  //reconnectInterval,
   useNewUrlParser: true,
 }
 
@@ -24,7 +24,7 @@ const onReconnect = () => {
 export let db = null
 
 const connectWithRetry = () => {
-  MongoClient.connect(mongodbConnection, connectOptions, (error, client) => {
+  MongoClient.connect("mongodb+srv://cezerin:cezerin@cezerin-db.cli8x8s.mongodb.net/shop", connectOptions, (error, client) => {
     if (error) {
       winston.error(
         `MongoDB connection was failed: ${error.message}`,
